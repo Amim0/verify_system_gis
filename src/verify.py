@@ -99,9 +99,9 @@ class VerifyApp:
     def print_report(self, name, mode, sig_ok, integrity_ok,
                      h1, h2, repro_score, threshold, samples):
 
-        print("\n" + "─" * 50)
+        print("\n" + "-" * 50)
         print(f"МОДЕЛЬ: {name} | режим: {mode}")
-        print("─" * 50)
+        print("-" * 50)
 
         print(f"Подпись:      {'OK' if sig_ok else 'FAIL'}")
         print(f"Целостность:  {'OK' if integrity_ok else 'FAIL'}")
@@ -129,9 +129,9 @@ class VerifyApp:
 
         passed = sig_ok and integrity_ok and (repro_score >= threshold)
 
-        print("─" * 50)
+        print("-" * 50)
         print("Модель корректна" if passed else "Модель не прошла проверку")
-        print("─" * 50 + "\n")
+        print("-" * 50 + "\n")
 
         return passed
 
