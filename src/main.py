@@ -39,7 +39,7 @@ class PipelineRunner:
 
         while True:
             try:
-                threshold = float(input("Порог воспроизводимости (0–1, default 0.75): ").strip())
+                threshold = float(input("Порог воспроизводимости (0–1): ").strip())
                 if 0 <= threshold <= 1:
                     self.threshold = threshold
                     break
