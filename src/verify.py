@@ -12,7 +12,7 @@ import json
 import tarfile
 import numpy as np
 from pathlib import Path
-from src.sign import SignatureService
+from sign import SignatureService
 
 # Вся модель и связанные данные хранятся внутри .kit-архива.
 # Поэтому при проверке используется только содержимое этого файла,
