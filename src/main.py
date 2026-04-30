@@ -39,7 +39,7 @@ class PipelineRunner:
 
         while True:
             try:
-                threshold = float(input("Порог воспроизводимости (0–1): ").strip())
+                threshold = float(input("Порог воспроизводимости (0–1, default 0.75): ").strip())
                 if 0 <= threshold <= 1:
                     self.threshold = threshold
                     break
@@ -47,9 +47,6 @@ class PipelineRunner:
             except ValueError:
                 print("Ошибка ввода")
 
-    # =========================
-    # LOGGING
-    # =========================
     def init_log(self):
 
         log_path = self.ART_DIR / f"report_{self.name}.txt"
@@ -76,10 +73,6 @@ class PipelineRunner:
         self.log(f"  {title}")
         self.log("=" * 55)
 
-
-    # =========================
-    # PIPELINE STEP
-    # =========================
     def run_step(self, step_num: int, title: str, script: str, stdin_input: str = ""):
 
         self.log_header(f"ШАГ {step_num}: {title}")
@@ -90,7 +83,8 @@ class PipelineRunner:
             [sys.executable, script_path],
             capture_output=True,
             text=True,
-            encoding="utf-8",
+            encoding="cp1251",
+            errors="ignore",
             input=stdin_input
         )
 
@@ -114,9 +108,6 @@ class PipelineRunner:
         else:
             self.log(f"  Шаг выполнен успешно")
 
-    # =========================
-    # MAIN FLOW
-    # =========================
     def run(self):
 
         self.collect_input()
@@ -144,11 +135,6 @@ class PipelineRunner:
         self.log("=" * 55)
 
         self.log_file.close()
-
-
-# =========================
-# ENTRY POINT
-# =========================
 if __name__ == "__main__":
     app = PipelineRunner()
     app.run()
