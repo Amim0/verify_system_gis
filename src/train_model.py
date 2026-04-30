@@ -1,4 +1,4 @@
-from src.model_text_gen import TextGenerator
+from model_text_gen import TextGenerator
 import pickle
 import sys
 from pathlib import Path
